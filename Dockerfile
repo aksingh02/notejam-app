@@ -1,6 +1,6 @@
-FROM node:18
+FROM node:latest
 
-WORKDIR /home/app
+WORKDIR /usr/db
 
 COPY package.json /home/app/
 
@@ -10,6 +10,6 @@ RUN npm install
 
 RUN node db.js
 
-EXPOSE 9000
+EXPOSE 3000
 
 CMD [ "npm", "start"]
