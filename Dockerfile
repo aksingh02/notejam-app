@@ -2,7 +2,7 @@ FROM node:latest
 
 WORKDIR /usr/db
 
-COPY package.json /home/app/
+COPY package.json /usr/db
 
 COPY . .
 
