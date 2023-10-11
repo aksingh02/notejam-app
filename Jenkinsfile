@@ -40,9 +40,12 @@ pipeline {
     
     stage('Execute Ansible') {
       steps {
-        ansiblePlaybook(credentialsId: 'private-key', inventory: '/etc/ansible/hosts', playbook: 'notejam-deploy.yaml', extraVars: [
-                             jenkins_build_number: "${BUILD_NUMBER}"
-                         ])
+        ansiblePlaybook(credentialsId: 'private-key', inventory: 'inventory.ini', playbook: 'playbooks/notejam-deploy.yaml', extraVars: [
+          docker_image_name: "aks0207/ansible-notejam",
+          docker_image_tag: "${BUILD_NUMBER}",
+          docker_container_name: "notejam",
+          docker_volume_name: "notejam"
+        ])
       }
     }
 
